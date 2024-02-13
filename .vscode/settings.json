@@ -1,0 +1,19 @@
+{
+  "[dart]": {
+      "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+      },
+      "editor.formatOnSave": true,
+      "editor.formatOnType": true,
+      "editor.selectionHighlight": false,
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.suggestSelection": "first",
+      "editor.tabCompletion": "onlySnippets",
+      "editor.wordBasedSuggestions": "off"
+  },
+  "dart.openDevTools": "never",
+  "svg.preview.background": "transparent",
+  "cmake.configureOnOpen": false,
+  "cmake.sourceDirectory": "${workspaceFolder}/windows"
+}
