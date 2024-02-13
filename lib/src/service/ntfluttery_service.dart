@@ -25,7 +25,7 @@ class NtflutteryService implements NflutteryAbstract {
       _credentials = credentials;
 
   @override
-  void createConfig(bool showLog) {
+  void addLogging(bool showLog) {
     if (showLog) _dio.addInterceptors();
   }
 
