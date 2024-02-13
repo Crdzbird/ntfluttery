@@ -1,7 +1,8 @@
 name: ntfluttery
-description: A starting point for Dart libraries or applications.
+description: ntfy.sh API client for Flutter/Dart
 version: 0.1.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/Crdzbird/ntfluttery
+homepage: https://github.com/Crdzbird/ntfluttery
 environment:
   sdk: ^3.2.6
 
