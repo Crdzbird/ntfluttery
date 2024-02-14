@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -60,70 +60,86 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : enum NetworkErrorType {</span>
-<span id="L2"><span class="lineNum">       2</span>              :   requestCancelled(1),</span>
-<span id="L3"><span class="lineNum">       3</span>              :   noInternetConnection(2),</span>
-<span id="L4"><span class="lineNum">       4</span>              :   badRequest(400),</span>
-<span id="L5"><span class="lineNum">       5</span>              :   unauthorized(401),</span>
-<span id="L6"><span class="lineNum">       6</span>              :   paymentRequired(402),</span>
-<span id="L7"><span class="lineNum">       7</span>              :   forbidden(403),</span>
-<span id="L8"><span class="lineNum">       8</span>              :   notFound(404),</span>
-<span id="L9"><span class="lineNum">       9</span>              :   methodNotAllowed(405),</span>
-<span id="L10"><span class="lineNum">      10</span>              :   notAcceptable(406),</span>
-<span id="L11"><span class="lineNum">      11</span>              :   proxyAuthenticationRequired(407),</span>
-<span id="L12"><span class="lineNum">      12</span>              :   requestTimeout(408),</span>
-<span id="L13"><span class="lineNum">      13</span>              :   conflict(409),</span>
-<span id="L14"><span class="lineNum">      14</span>              :   gone(410),</span>
-<span id="L15"><span class="lineNum">      15</span>              :   lengthRequired(411),</span>
-<span id="L16"><span class="lineNum">      16</span>              :   preconditionFailed(412),</span>
-<span id="L17"><span class="lineNum">      17</span>              :   payloadTooLarge(413),</span>
-<span id="L18"><span class="lineNum">      18</span>              :   uriTooLong(414),</span>
-<span id="L19"><span class="lineNum">      19</span>              :   unsupportedMediaType(415),</span>
-<span id="L20"><span class="lineNum">      20</span>              :   rangeNotSatisfiable(416),</span>
-<span id="L21"><span class="lineNum">      21</span>              :   expectationFailed(417),</span>
-<span id="L22"><span class="lineNum">      22</span>              :   imATeapot(418),</span>
-<span id="L23"><span class="lineNum">      23</span>              :   authenticationTimeout(419),</span>
-<span id="L24"><span class="lineNum">      24</span>              :   methodFailure(420),</span>
-<span id="L25"><span class="lineNum">      25</span>              :   misdirectedRequest(421),</span>
-<span id="L26"><span class="lineNum">      26</span>              :   unprocessableEntity(422),</span>
-<span id="L27"><span class="lineNum">      27</span>              :   locked(423),</span>
-<span id="L28"><span class="lineNum">      28</span>              :   failedDependency(424),</span>
-<span id="L29"><span class="lineNum">      29</span>              :   upgradeRequired(426),</span>
-<span id="L30"><span class="lineNum">      30</span>              :   preconditionRequired(428),</span>
-<span id="L31"><span class="lineNum">      31</span>              :   tooManyRequests(429),</span>
-<span id="L32"><span class="lineNum">      32</span>              :   requestHeaderFieldsTooLarge(431),</span>
-<span id="L33"><span class="lineNum">      33</span>              :   unavailableForLegalReasons(451),</span>
-<span id="L34"><span class="lineNum">      34</span>              :   clientClosedRequest(499),</span>
-<span id="L35"><span class="lineNum">      35</span>              :   internalServerError(500),</span>
-<span id="L36"><span class="lineNum">      36</span>              :   notImplemented(501),</span>
-<span id="L37"><span class="lineNum">      37</span>              :   badGateway(502),</span>
-<span id="L38"><span class="lineNum">      38</span>              :   serviceUnavailable(503),</span>
-<span id="L39"><span class="lineNum">      39</span>              :   gatewayTimeout(504),</span>
-<span id="L40"><span class="lineNum">      40</span>              :   httpVersionNotSupported(505),</span>
-<span id="L41"><span class="lineNum">      41</span>              :   variantAlsoNegotiates(506),</span>
-<span id="L42"><span class="lineNum">      42</span>              :   insufficientStorage(507),</span>
-<span id="L43"><span class="lineNum">      43</span>              :   loopDetected(508),</span>
-<span id="L44"><span class="lineNum">      44</span>              :   notExtended(510),</span>
-<span id="L45"><span class="lineNum">      45</span>              :   networkAuthenticationRequired(511),</span>
-<span id="L46"><span class="lineNum">      46</span>              :   badResponse(520),</span>
-<span id="L47"><span class="lineNum">      47</span>              :   connectionError(522),</span>
-<span id="L48"><span class="lineNum">      48</span>              :   badCertificate(526),</span>
-<span id="L49"><span class="lineNum">      49</span>              :   networkConnectTimeoutError(598),</span>
-<span id="L50"><span class="lineNum">      50</span>              :   networkReceiveTimeoutError(599),</span>
-<span id="L51"><span class="lineNum">      51</span>              :   networkSendTimeoutError(599),</span>
-<span id="L52"><span class="lineNum">      52</span>              :   networkRequestCancelled(499),</span>
-<span id="L53"><span class="lineNum">      53</span>              :   custom(999),</span>
-<span id="L54"><span class="lineNum">      54</span>              :   unknownError(0);</span>
-<span id="L55"><span class="lineNum">      55</span>              : </span>
-<span id="L56"><span class="lineNum">      56</span>              :   const NetworkErrorType(this.statusCode);</span>
-<span id="L57"><span class="lineNum">      57</span>              : </span>
-<span id="L58"><span class="lineNum">      58</span>              :   final int statusCode;</span>
+<span id="L1"><span class="lineNum">       1</span>              : /// Enum representing various network error types.</span>
+<span id="L2"><span class="lineNum">       2</span>              : ///</span>
+<span id="L3"><span class="lineNum">       3</span>              : /// This enumeration categorizes network errors primarily based on HTTP status codes,</span>
+<span id="L4"><span class="lineNum">       4</span>              : /// along with some additional custom error types for more specific scenarios.</span>
+<span id="L5"><span class="lineNum">       5</span>              : enum NetworkErrorType {</span>
+<span id="L6"><span class="lineNum">       6</span>              :   requestCancelled(1),</span>
+<span id="L7"><span class="lineNum">       7</span>              :   noInternetConnection(2),</span>
+<span id="L8"><span class="lineNum">       8</span>              :   badRequest(400),</span>
+<span id="L9"><span class="lineNum">       9</span>              :   unauthorized(401),</span>
+<span id="L10"><span class="lineNum">      10</span>              :   paymentRequired(402),</span>
+<span id="L11"><span class="lineNum">      11</span>              :   forbidden(403),</span>
+<span id="L12"><span class="lineNum">      12</span>              :   notFound(404),</span>
+<span id="L13"><span class="lineNum">      13</span>              :   methodNotAllowed(405),</span>
+<span id="L14"><span class="lineNum">      14</span>              :   notAcceptable(406),</span>
+<span id="L15"><span class="lineNum">      15</span>              :   proxyAuthenticationRequired(407),</span>
+<span id="L16"><span class="lineNum">      16</span>              :   requestTimeout(408),</span>
+<span id="L17"><span class="lineNum">      17</span>              :   conflict(409),</span>
+<span id="L18"><span class="lineNum">      18</span>              :   gone(410),</span>
+<span id="L19"><span class="lineNum">      19</span>              :   lengthRequired(411),</span>
+<span id="L20"><span class="lineNum">      20</span>              :   preconditionFailed(412),</span>
+<span id="L21"><span class="lineNum">      21</span>              :   payloadTooLarge(413),</span>
+<span id="L22"><span class="lineNum">      22</span>              :   uriTooLong(414),</span>
+<span id="L23"><span class="lineNum">      23</span>              :   unsupportedMediaType(415),</span>
+<span id="L24"><span class="lineNum">      24</span>              :   rangeNotSatisfiable(416),</span>
+<span id="L25"><span class="lineNum">      25</span>              :   expectationFailed(417),</span>
+<span id="L26"><span class="lineNum">      26</span>              :   imATeapot(418),</span>
+<span id="L27"><span class="lineNum">      27</span>              :   authenticationTimeout(419),</span>
+<span id="L28"><span class="lineNum">      28</span>              :   methodFailure(420),</span>
+<span id="L29"><span class="lineNum">      29</span>              :   misdirectedRequest(421),</span>
+<span id="L30"><span class="lineNum">      30</span>              :   unprocessableEntity(422),</span>
+<span id="L31"><span class="lineNum">      31</span>              :   locked(423),</span>
+<span id="L32"><span class="lineNum">      32</span>              :   failedDependency(424),</span>
+<span id="L33"><span class="lineNum">      33</span>              :   upgradeRequired(426),</span>
+<span id="L34"><span class="lineNum">      34</span>              :   preconditionRequired(428),</span>
+<span id="L35"><span class="lineNum">      35</span>              :   tooManyRequests(429),</span>
+<span id="L36"><span class="lineNum">      36</span>              :   requestHeaderFieldsTooLarge(431),</span>
+<span id="L37"><span class="lineNum">      37</span>              :   unavailableForLegalReasons(451),</span>
+<span id="L38"><span class="lineNum">      38</span>              :   clientClosedRequest(499),</span>
+<span id="L39"><span class="lineNum">      39</span>              :   internalServerError(500),</span>
+<span id="L40"><span class="lineNum">      40</span>              :   notImplemented(501),</span>
+<span id="L41"><span class="lineNum">      41</span>              :   badGateway(502),</span>
+<span id="L42"><span class="lineNum">      42</span>              :   serviceUnavailable(503),</span>
+<span id="L43"><span class="lineNum">      43</span>              :   gatewayTimeout(504),</span>
+<span id="L44"><span class="lineNum">      44</span>              :   httpVersionNotSupported(505),</span>
+<span id="L45"><span class="lineNum">      45</span>              :   variantAlsoNegotiates(506),</span>
+<span id="L46"><span class="lineNum">      46</span>              :   insufficientStorage(507),</span>
+<span id="L47"><span class="lineNum">      47</span>              :   loopDetected(508),</span>
+<span id="L48"><span class="lineNum">      48</span>              :   notExtended(510),</span>
+<span id="L49"><span class="lineNum">      49</span>              :   networkAuthenticationRequired(511),</span>
+<span id="L50"><span class="lineNum">      50</span>              :   badResponse(520),</span>
+<span id="L51"><span class="lineNum">      51</span>              :   connectionError(522),</span>
+<span id="L52"><span class="lineNum">      52</span>              :   badCertificate(526),</span>
+<span id="L53"><span class="lineNum">      53</span>              :   networkConnectTimeoutError(598),</span>
+<span id="L54"><span class="lineNum">      54</span>              :   networkReceiveTimeoutError(599),</span>
+<span id="L55"><span class="lineNum">      55</span>              :   networkSendTimeoutError(599),</span>
+<span id="L56"><span class="lineNum">      56</span>              :   networkRequestCancelled(499),</span>
+<span id="L57"><span class="lineNum">      57</span>              :   custom(999),</span>
+<span id="L58"><span class="lineNum">      58</span>              :   unknownError(0);</span>
 <span id="L59"><span class="lineNum">      59</span>              : </span>
-<span id="L60"><span class="lineNum">      60</span> <span class="tlaGNC tlaBgGNC">           1 :   static NetworkErrorType fromStatusCode(int statusCode) =&gt;</span></span>
-<span id="L61"><span class="lineNum">      61</span> <span class="tlaGNC">           1 :       NetworkErrorType.values.firstWhere(</span></span>
-<span id="L62"><span class="lineNum">      62</span> <span class="tlaGNC">           3 :         (e) =&gt; e.statusCode == statusCode,</span></span>
-<span id="L63"><span class="lineNum">      63</span>              :       );</span>
-<span id="L64"><span class="lineNum">      64</span>              : }</span>
+<span id="L60"><span class="lineNum">      60</span>              :   /// Constructs a `NetworkErrorType` instance with a specific status code.</span>
+<span id="L61"><span class="lineNum">      61</span>              :   ///</span>
+<span id="L62"><span class="lineNum">      62</span>              :   /// Each error type is associated with a unique numeric status code.</span>
+<span id="L63"><span class="lineNum">      63</span>              :   const NetworkErrorType(this.statusCode);</span>
+<span id="L64"><span class="lineNum">      64</span>              : </span>
+<span id="L65"><span class="lineNum">      65</span>              :   /// The numeric status code representing the network error type.</span>
+<span id="L66"><span class="lineNum">      66</span>              :   final int statusCode;</span>
+<span id="L67"><span class="lineNum">      67</span>              : </span>
+<span id="L68"><span class="lineNum">      68</span>              :   /// Retrieves the `NetworkErrorType` corresponding to a given status code.</span>
+<span id="L69"><span class="lineNum">      69</span>              :   ///</span>
+<span id="L70"><span class="lineNum">      70</span>              :   /// This method attempts to map a provided integer [statusCode] to a</span>
+<span id="L71"><span class="lineNum">      71</span>              :   /// `NetworkErrorType`. If no matching type is found, it defaults to `null`.</span>
+<span id="L72"><span class="lineNum">      72</span>              :   ///</span>
+<span id="L73"><span class="lineNum">      73</span>              :   /// - [statusCode]: The status code to be converted into a `NetworkErrorType`.</span>
+<span id="L74"><span class="lineNum">      74</span>              :   /// - Returns: The corresponding `NetworkErrorType` instance or `null` if</span>
+<span id="L75"><span class="lineNum">      75</span>              :   ///   no match is found.</span>
+<span id="L76"><span class="lineNum">      76</span> <span class="tlaGNC tlaBgGNC">           2 :   static NetworkErrorType fromStatusCode(int statusCode) =&gt;</span></span>
+<span id="L77"><span class="lineNum">      77</span> <span class="tlaGNC">           2 :       NetworkErrorType.values.firstWhere(</span></span>
+<span id="L78"><span class="lineNum">      78</span> <span class="tlaGNC">           6 :         (e) =&gt; e.statusCode == statusCode,</span></span>
+<span id="L79"><span class="lineNum">      79</span>              :       );</span>
+<span id="L80"><span class="lineNum">      80</span>              : }</span>
         </pre>
               </td>
             </tr>

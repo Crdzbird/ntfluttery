@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -60,21 +60,47 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : enum EventTypes {</span>
-<span id="L2"><span class="lineNum">       2</span>              :   open('open'),</span>
-<span id="L3"><span class="lineNum">       3</span>              :   keepAlive('keepAlive'),</span>
-<span id="L4"><span class="lineNum">       4</span>              :   message('message'),</span>
-<span id="L5"><span class="lineNum">       5</span>              :   pollRequest('pollRequest'),</span>
-<span id="L6"><span class="lineNum">       6</span>              :   none('none');</span>
+<span id="L1"><span class="lineNum">       1</span>              : /// Enum representing different types of events.</span>
+<span id="L2"><span class="lineNum">       2</span>              : ///</span>
+<span id="L3"><span class="lineNum">       3</span>              : /// This enum is used to categorize various events by their type.</span>
+<span id="L4"><span class="lineNum">       4</span>              : enum EventTypes {</span>
+<span id="L5"><span class="lineNum">       5</span>              :   /// Event type for 'open' events.</span>
+<span id="L6"><span class="lineNum">       6</span>              :   open('open'),</span>
 <span id="L7"><span class="lineNum">       7</span>              : </span>
-<span id="L8"><span class="lineNum">       8</span>              :   const EventTypes(this.event);</span>
-<span id="L9"><span class="lineNum">       9</span>              :   final String event;</span>
+<span id="L8"><span class="lineNum">       8</span>              :   /// Event type for 'keepAlive' events.</span>
+<span id="L9"><span class="lineNum">       9</span>              :   keepAlive('keepAlive'),</span>
 <span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC tlaBgGNC">           2 :   static fromValue(String value) =&gt; EventTypes.values.firstWhere(</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :         (e) =&gt; e.event == value,</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :         orElse: () =&gt; EventTypes.none,</span></span>
-<span id="L14"><span class="lineNum">      14</span>              :       );</span>
-<span id="L15"><span class="lineNum">      15</span>              : }</span>
+<span id="L11"><span class="lineNum">      11</span>              :   /// Event type for 'message' events.</span>
+<span id="L12"><span class="lineNum">      12</span>              :   message('message'),</span>
+<span id="L13"><span class="lineNum">      13</span>              : </span>
+<span id="L14"><span class="lineNum">      14</span>              :   /// Event type for 'pollRequest' events.</span>
+<span id="L15"><span class="lineNum">      15</span>              :   pollRequest('pollRequest'),</span>
+<span id="L16"><span class="lineNum">      16</span>              : </span>
+<span id="L17"><span class="lineNum">      17</span>              :   /// Represents a lack of an event or an undefined event type.</span>
+<span id="L18"><span class="lineNum">      18</span>              :   none('none');</span>
+<span id="L19"><span class="lineNum">      19</span>              : </span>
+<span id="L20"><span class="lineNum">      20</span>              :   /// Constructs an `EventTypes` instance.</span>
+<span id="L21"><span class="lineNum">      21</span>              :   ///</span>
+<span id="L22"><span class="lineNum">      22</span>              :   /// Each event type is associated with a [String] value that</span>
+<span id="L23"><span class="lineNum">      23</span>              :   /// represents the event.</span>
+<span id="L24"><span class="lineNum">      24</span>              :   const EventTypes(this.event);</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              :   /// The string representation of the event type.</span>
+<span id="L27"><span class="lineNum">      27</span>              :   final String event;</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              :   /// Creates an `EventTypes` from a [String] value.</span>
+<span id="L30"><span class="lineNum">      30</span>              :   ///</span>
+<span id="L31"><span class="lineNum">      31</span>              :   /// This method maps a string value to an `EventTypes` instance. If the</span>
+<span id="L32"><span class="lineNum">      32</span>              :   /// provided [value] does not correspond to any event type, it defaults</span>
+<span id="L33"><span class="lineNum">      33</span>              :   /// to [EventTypes.none].</span>
+<span id="L34"><span class="lineNum">      34</span>              :   ///</span>
+<span id="L35"><span class="lineNum">      35</span>              :   /// - [value]: The string value to convert to an `EventTypes`.</span>
+<span id="L36"><span class="lineNum">      36</span>              :   /// - Returns: The corresponding `EventTypes` instance.</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC tlaBgGNC">           4 :   static fromValue(String value) =&gt; EventTypes.values.firstWhere(</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :         (e) =&gt; e.event == value,</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           2 :         orElse: () =&gt; EventTypes.none,</span></span>
+<span id="L40"><span class="lineNum">      40</span>              :       );</span>
+<span id="L41"><span class="lineNum">      41</span>              : }</span>
         </pre>
               </td>
             </tr>

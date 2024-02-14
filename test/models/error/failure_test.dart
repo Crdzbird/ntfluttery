@@ -30,7 +30,5 @@ void main() {
     test('Failure sealed class should have no subclasses', () {
       expect(Failure, equals(Failure));
     });
-
-    test('Props', () {});
   });
 }

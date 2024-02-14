@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
             <td class="headerCovTableEntry">2</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">2</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -60,10 +60,28 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : extension IntExtension on int {</span>
-<span id="L2"><span class="lineNum">       2</span> <span class="tlaUNC tlaBgUNC">           0 :   DateTime get toDateTimeFromUnix =&gt;</span></span>
-<span id="L3"><span class="lineNum">       3</span> <span class="tlaUNC">           0 :       DateTime.fromMillisecondsSinceEpoch(this * 1000);</span></span>
-<span id="L4"><span class="lineNum">       4</span>              : }</span>
+<span id="L1"><span class="lineNum">       1</span>              : /// Extension on `int` to provide additional functionalities.</span>
+<span id="L2"><span class="lineNum">       2</span>              : ///</span>
+<span id="L3"><span class="lineNum">       3</span>              : /// This extension adds a utility method to the `int` class to convert</span>
+<span id="L4"><span class="lineNum">       4</span>              : /// an integer representing a Unix timestamp to a `DateTime` object.</span>
+<span id="L5"><span class="lineNum">       5</span>              : extension IntExtension on int {</span>
+<span id="L6"><span class="lineNum">       6</span>              :   /// Converts the integer (assumed to be a Unix timestamp) to a `DateTime` object.</span>
+<span id="L7"><span class="lineNum">       7</span>              :   ///</span>
+<span id="L8"><span class="lineNum">       8</span>              :   /// A Unix timestamp is the number of seconds that have elapsed since the Unix epoch</span>
+<span id="L9"><span class="lineNum">       9</span>              :   /// (midnight UTC of 1 January 1970). This method converts the Unix timestamp to</span>
+<span id="L10"><span class="lineNum">      10</span>              :   /// a `DateTime` object representing the same point in time.</span>
+<span id="L11"><span class="lineNum">      11</span>              :   ///</span>
+<span id="L12"><span class="lineNum">      12</span>              :   /// - Returns: A `DateTime` object corresponding to the Unix timestamp.</span>
+<span id="L13"><span class="lineNum">      13</span>              :   ///</span>
+<span id="L14"><span class="lineNum">      14</span>              :   /// Example:</span>
+<span id="L15"><span class="lineNum">      15</span>              :   /// ```</span>
+<span id="L16"><span class="lineNum">      16</span>              :   /// var unixTimestamp = 1633072800; // Example Unix timestamp</span>
+<span id="L17"><span class="lineNum">      17</span>              :   /// var dateTime = unixTimestamp.toDateTimeFromUnix;</span>
+<span id="L18"><span class="lineNum">      18</span>              :   /// print(dateTime); // Prints the corresponding DateTime object</span>
+<span id="L19"><span class="lineNum">      19</span>              :   /// ```</span>
+<span id="L20"><span class="lineNum">      20</span> <span class="tlaGNC tlaBgGNC">           2 :   DateTime get toDateTimeFromUnix =&gt;</span></span>
+<span id="L21"><span class="lineNum">      21</span> <span class="tlaGNC">           4 :       DateTime.fromMillisecondsSinceEpoch(this * 1000);</span></span>
+<span id="L22"><span class="lineNum">      22</span>              : }</span>
         </pre>
               </td>
             </tr>

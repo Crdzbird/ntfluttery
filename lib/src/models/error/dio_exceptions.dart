@@ -41,9 +41,7 @@ class DioExceptions extends Equatable {
     final errorResponse = ErrorResponse.plainMessage(
         (error as DioException).response?.statusCode ?? 0,
         '${(error as DioException).response?.data}');
-    return errorResponse.message.isEmpty
-        ? errorResponse.msg
-        : errorResponse.message;
+    return errorResponse.message;
   }
 
   /// Maps the Dio exception to a corresponding `NetworkErrorType`.
@@ -63,9 +61,6 @@ class DioExceptions extends Equatable {
           );
           if (errorResponse.message.isNotEmpty ||
               errorResponse.msg.isNotEmpty) {
-            return NetworkErrorType.custom;
-          }
-          if (errorResponse.statusCode != 0) {
             return NetworkErrorType.custom;
           }
         }

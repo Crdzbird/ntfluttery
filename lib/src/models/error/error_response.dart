@@ -43,7 +43,7 @@ class ErrorResponse extends Equatable {
   /// - [message]: The error message.
   /// - Returns: An `ErrorResponse` object.
   factory ErrorResponse.plainMessage(int statusCode, String? message) =>
-      ErrorResponse(statusCode: statusCode, message: message ?? '');
+      ErrorResponse(statusCode: statusCode, message: message ?? '', msg: '');
 
   /// Creates an `ErrorResponse` from a map.
   ///

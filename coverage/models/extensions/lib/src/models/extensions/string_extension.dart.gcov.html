@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
-            <td class="headerCovTableEntry">13</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntryHi">100.0&nbsp;%</td>
+            <td class="headerCovTableEntry">12</td>
+            <td class="headerCovTableEntry">12</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -62,32 +62,53 @@
 <pre class="source">
 <span id="L1"><span class="lineNum">       1</span>              : import 'dart:convert';</span>
 <span id="L2"><span class="lineNum">       2</span>              : </span>
-<span id="L3"><span class="lineNum">       3</span>              : extension StringExtension on String {</span>
-<span id="L4"><span class="lineNum">       4</span> <span class="tlaUNC tlaBgUNC">           0 :   List&lt;Map&lt;String, dynamic&gt;&gt; get separateAndParseJson {</span></span>
-<span id="L5"><span class="lineNum">       5</span> <span class="tlaUNC">           0 :     if (isEmpty) return [];</span></span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaUNC">           0 :     List&lt;Map&lt;String, dynamic&gt;&gt; jsonObjects = [];</span></span>
-<span id="L7"><span class="lineNum">       7</span>              :     int openBrackets = 0;</span>
-<span id="L8"><span class="lineNum">       8</span>              :     int start = 0;</span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC">           0 :     for (int i = 0; i &lt; length; i++) {</span></span>
-<span id="L10"><span class="lineNum">      10</span> <span class="tlaUNC">           0 :       if (this[i] == '{') {</span></span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaUNC">           0 :         if (openBrackets == 0) start = i;</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaUNC">           0 :         openBrackets++;</span></span>
-<span id="L13"><span class="lineNum">      13</span>              :       }</span>
-<span id="L14"><span class="lineNum">      14</span> <span class="tlaUNC">           0 :       if (this[i] == '}') {</span></span>
-<span id="L15"><span class="lineNum">      15</span> <span class="tlaUNC">           0 :         openBrackets--;</span></span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaUNC">           0 :         if (openBrackets == 0) {</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaUNC">           0 :           var jsonStr = substring(start, i + 1);</span></span>
-<span id="L18"><span class="lineNum">      18</span>              :           try {</span>
-<span id="L19"><span class="lineNum">      19</span> <span class="tlaUNC">           0 :             jsonObjects.add(json.decode(jsonStr));</span></span>
-<span id="L20"><span class="lineNum">      20</span>              :           } catch (e) {</span>
-<span id="L21"><span class="lineNum">      21</span> <span class="tlaUNC">           0 :             print('Error parsing JSON: $e');</span></span>
-<span id="L22"><span class="lineNum">      22</span>              :           }</span>
-<span id="L23"><span class="lineNum">      23</span>              :         }</span>
-<span id="L24"><span class="lineNum">      24</span>              :       }</span>
-<span id="L25"><span class="lineNum">      25</span>              :     }</span>
-<span id="L26"><span class="lineNum">      26</span>              :     return jsonObjects;</span>
-<span id="L27"><span class="lineNum">      27</span>              :   }</span>
-<span id="L28"><span class="lineNum">      28</span>              : }</span>
+<span id="L3"><span class="lineNum">       3</span>              : /// Extension on `String` to provide additional functionalities.</span>
+<span id="L4"><span class="lineNum">       4</span>              : ///</span>
+<span id="L5"><span class="lineNum">       5</span>              : /// This extension adds a utility method to the `String` class to parse</span>
+<span id="L6"><span class="lineNum">       6</span>              : /// potentially multiple JSON objects contained within a single string.</span>
+<span id="L7"><span class="lineNum">       7</span>              : extension StringExtension on String {</span>
+<span id="L8"><span class="lineNum">       8</span>              :   /// Separates and parses multiple JSON objects within the string.</span>
+<span id="L9"><span class="lineNum">       9</span>              :   ///</span>
+<span id="L10"><span class="lineNum">      10</span>              :   /// This method is useful when the string contains several JSON objects</span>
+<span id="L11"><span class="lineNum">      11</span>              :   /// concatenated together without delimiters. It separates these JSON objects</span>
+<span id="L12"><span class="lineNum">      12</span>              :   /// and attempts to parse each one into a `Map&lt;String, dynamic&gt;`.</span>
+<span id="L13"><span class="lineNum">      13</span>              :   ///</span>
+<span id="L14"><span class="lineNum">      14</span>              :   /// - Returns: A list of `Map&lt;String, dynamic&gt;` representing the parsed JSON objects.</span>
+<span id="L15"><span class="lineNum">      15</span>              :   ///   If the string is empty or parsing fails, an empty list is returned.</span>
+<span id="L16"><span class="lineNum">      16</span>              :   ///</span>
+<span id="L17"><span class="lineNum">      17</span>              :   /// Example:</span>
+<span id="L18"><span class="lineNum">      18</span>              :   /// ```</span>
+<span id="L19"><span class="lineNum">      19</span>              :   /// var jsonString = '{&quot;name&quot;:&quot;John&quot;}{&quot;age&quot;:30}';</span>
+<span id="L20"><span class="lineNum">      20</span>              :   /// var jsonObjects = jsonString.separateAndParseJson;</span>
+<span id="L21"><span class="lineNum">      21</span>              :   /// for (var jsonObj in jsonObjects) {</span>
+<span id="L22"><span class="lineNum">      22</span>              :   ///   print(jsonObj); // Prints each parsed JSON object</span>
+<span id="L23"><span class="lineNum">      23</span>              :   /// }</span>
+<span id="L24"><span class="lineNum">      24</span>              :   /// ```</span>
+<span id="L25"><span class="lineNum">      25</span> <span class="tlaGNC tlaBgGNC">           1 :   List&lt;Map&lt;String, dynamic&gt;&gt; get separateAndParseJson {</span></span>
+<span id="L26"><span class="lineNum">      26</span> <span class="tlaGNC">           2 :     if (isEmpty) return [];</span></span>
+<span id="L27"><span class="lineNum">      27</span> <span class="tlaGNC">           1 :     List&lt;Map&lt;String, dynamic&gt;&gt; jsonObjects = [];</span></span>
+<span id="L28"><span class="lineNum">      28</span>              :     int openBrackets = 0;</span>
+<span id="L29"><span class="lineNum">      29</span>              :     int start = 0;</span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           3 :     for (int i = 0; i &lt; length; i++) {</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           2 :       if (this[i] == '{') {</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :         if (openBrackets == 0) start = i;</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaGNC">           1 :         openBrackets++;</span></span>
+<span id="L34"><span class="lineNum">      34</span>              :       }</span>
+<span id="L35"><span class="lineNum">      35</span> <span class="tlaGNC">           2 :       if (this[i] == '}') {</span></span>
+<span id="L36"><span class="lineNum">      36</span> <span class="tlaGNC">           1 :         openBrackets--;</span></span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC">           1 :         if (openBrackets == 0) {</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           2 :           var jsonStr = substring(start, i + 1);</span></span>
+<span id="L39"><span class="lineNum">      39</span>              :           try {</span>
+<span id="L40"><span class="lineNum">      40</span> <span class="tlaGNC">           2 :             jsonObjects.add(json.decode(jsonStr));</span></span>
+<span id="L41"><span class="lineNum">      41</span>              :           } catch (e) {</span>
+<span id="L42"><span class="lineNum">      42</span>              :             rethrow;</span>
+<span id="L43"><span class="lineNum">      43</span>              :           }</span>
+<span id="L44"><span class="lineNum">      44</span>              :         }</span>
+<span id="L45"><span class="lineNum">      45</span>              :       }</span>
+<span id="L46"><span class="lineNum">      46</span>              :     }</span>
+<span id="L47"><span class="lineNum">      47</span>              :     return jsonObjects;</span>
+<span id="L48"><span class="lineNum">      48</span>              :   }</span>
+<span id="L49"><span class="lineNum">      49</span>              : }</span>
         </pre>
               </td>
             </tr>

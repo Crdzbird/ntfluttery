@@ -59,8 +59,29 @@ void main() {
     test('CopyWith', () {
       var errorResponse = ErrorResponse(
           message: 'Error', statusCode: 500, msg: 'Internal server error');
+      var newErrorResponse = errorResponse.copyWith(
+          statusCode: 400, message: 'New error', msg: 'New message');
+      expect(newErrorResponse.message, equals('New error'));
+      expect(newErrorResponse.msg, equals('New message'));
+      expect(newErrorResponse.statusCode, equals(400));
+    });
+
+    test('CopyWith null', () {
+      var errorResponse = ErrorResponse(
+          message: 'Error', statusCode: 500, msg: 'Internal server error');
+      var newErrorResponse = errorResponse.copyWith();
+      expect(newErrorResponse.message, equals('Error'));
+      expect(newErrorResponse.msg, equals('Internal server error'));
+      expect(newErrorResponse.statusCode, equals(500));
+    });
+
+    test('CopyWith partial', () {
+      var errorResponse = ErrorResponse(
+          message: 'Error', statusCode: 500, msg: 'Internal server error');
       var newErrorResponse = errorResponse.copyWith(message: 'New error');
       expect(newErrorResponse.message, equals('New error'));
+      expect(newErrorResponse.msg, equals('Internal server error'));
+      expect(newErrorResponse.statusCode, equals(500));
     });
 
     test('FromJson', () {
@@ -96,8 +117,10 @@ void main() {
     test('CopyWith', () {
       var errorResponse = ErrorResponse(
           message: 'Error', statusCode: 500, msg: 'Internal server error');
-      var newErrorResponse = errorResponse.copyWith(message: 'New error');
+      var newErrorResponse =
+          errorResponse.copyWith(message: 'New error', msg: 'New message');
       expect(newErrorResponse.message, equals('New error'));
+      expect(newErrorResponse.msg, equals('New message'));
     });
 
     test('FromMap', () {

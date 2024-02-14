@@ -1,5 +1,5 @@
 name: ntfluttery
-description: ntfy.sh API client for Flutter/Dart
+description: ntfy.sh API client for Flutter/Dart, fetch, create, update, delete notifications.
 version: 0.1.0
 repository: https://github.com/Crdzbird/ntfluttery
 homepage: https://github.com/Crdzbird/ntfluttery

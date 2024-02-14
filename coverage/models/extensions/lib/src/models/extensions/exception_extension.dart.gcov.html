@@ -31,13 +31,13 @@
             <td class="headerValue">lcov.info</td>
             <td></td>
             <td class="headerItem">Lines:</td>
-            <td class="headerCovTableEntryLo">0.0&nbsp;%</td>
+            <td class="headerCovTableEntryMed">80.0&nbsp;%</td>
             <td class="headerCovTableEntry">5</td>
-            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">4</td>
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -63,16 +63,40 @@
 <span id="L1"><span class="lineNum">       1</span>              : import 'package:ntfluttery/src/models/enums/network_error_type.dart';</span>
 <span id="L2"><span class="lineNum">       2</span>              : import 'package:ntfluttery/src/models/error/dio_exceptions.dart';</span>
 <span id="L3"><span class="lineNum">       3</span>              : </span>
-<span id="L4"><span class="lineNum">       4</span>              : extension ExceptionExtension on Exception {</span>
-<span id="L5"><span class="lineNum">       5</span> <span class="tlaUNC tlaBgUNC">           0 :   (NetworkErrorType?, String? dioMessage) get message {</span></span>
-<span id="L6"><span class="lineNum">       6</span> <span class="tlaUNC">           0 :     final dioExceptions = DioExceptions(error: this);</span></span>
-<span id="L7"><span class="lineNum">       7</span> <span class="tlaUNC">           0 :     final networkType = dioExceptions.errorMessage;</span></span>
-<span id="L8"><span class="lineNum">       8</span> <span class="tlaUNC">           0 :     if (networkType == NetworkErrorType.custom) {</span></span>
-<span id="L9"><span class="lineNum">       9</span> <span class="tlaUNC">           0 :       return (null, dioExceptions.bodyErrorMessage);</span></span>
-<span id="L10"><span class="lineNum">      10</span>              :     }</span>
-<span id="L11"><span class="lineNum">      11</span>              :     return (networkType, null);</span>
-<span id="L12"><span class="lineNum">      12</span>              :   }</span>
-<span id="L13"><span class="lineNum">      13</span>              : }</span>
+<span id="L4"><span class="lineNum">       4</span>              : /// Extension on `Exception` to provide additional functionalities.</span>
+<span id="L5"><span class="lineNum">       5</span>              : ///</span>
+<span id="L6"><span class="lineNum">       6</span>              : /// This extension adds a utility method to the `Exception` class</span>
+<span id="L7"><span class="lineNum">       7</span>              : /// to extract meaningful error messages and types from exceptions, specifically</span>
+<span id="L8"><span class="lineNum">       8</span>              : /// handling Dio exceptions.</span>
+<span id="L9"><span class="lineNum">       9</span>              : extension ExceptionExtension on Exception {</span>
+<span id="L10"><span class="lineNum">      10</span>              :   /// Retrieves a custom message and network error type from the exception.</span>
+<span id="L11"><span class="lineNum">      11</span>              :   ///</span>
+<span id="L12"><span class="lineNum">      12</span>              :   /// This method uses `DioExceptions` to interpret the exception, extracting</span>
+<span id="L13"><span class="lineNum">      13</span>              :   /// a network error type and a custom error message, if applicable. If the</span>
+<span id="L14"><span class="lineNum">      14</span>              :   /// error is identified as a custom type, it returns a detailed error message.</span>
+<span id="L15"><span class="lineNum">      15</span>              :   /// Otherwise, it categorizes the error into one of the predefined network error types.</span>
+<span id="L16"><span class="lineNum">      16</span>              :   ///</span>
+<span id="L17"><span class="lineNum">      17</span>              :   /// - Returns: A tuple containing a `NetworkErrorType` (if not custom) and</span>
+<span id="L18"><span class="lineNum">      18</span>              :   ///   a custom error message (if the error type is custom).</span>
+<span id="L19"><span class="lineNum">      19</span>              :   ///</span>
+<span id="L20"><span class="lineNum">      20</span>              :   /// Example:</span>
+<span id="L21"><span class="lineNum">      21</span>              :   /// ```</span>
+<span id="L22"><span class="lineNum">      22</span>              :   /// try {</span>
+<span id="L23"><span class="lineNum">      23</span>              :   ///   // Some operation that might throw an exception</span>
+<span id="L24"><span class="lineNum">      24</span>              :   /// } catch (e) {</span>
+<span id="L25"><span class="lineNum">      25</span>              :   ///   var (errorType, errorMessage) = e.message;</span>
+<span id="L26"><span class="lineNum">      26</span>              :   ///   // Handle the error based on type or message</span>
+<span id="L27"><span class="lineNum">      27</span>              :   /// }</span>
+<span id="L28"><span class="lineNum">      28</span>              :   /// ```</span>
+<span id="L29"><span class="lineNum">      29</span> <span class="tlaGNC tlaBgGNC">           1 :   (NetworkErrorType?, String? dioMessage) get message {</span></span>
+<span id="L30"><span class="lineNum">      30</span> <span class="tlaGNC">           1 :     final dioExceptions = DioExceptions(error: this);</span></span>
+<span id="L31"><span class="lineNum">      31</span> <span class="tlaGNC">           1 :     final networkType = dioExceptions.errorMessage;</span></span>
+<span id="L32"><span class="lineNum">      32</span> <span class="tlaGNC">           1 :     if (networkType == NetworkErrorType.custom) {</span></span>
+<span id="L33"><span class="lineNum">      33</span> <span class="tlaUNC tlaBgUNC">           0 :       return (null, dioExceptions.bodyErrorMessage);</span></span>
+<span id="L34"><span class="lineNum">      34</span>              :     }</span>
+<span id="L35"><span class="lineNum">      35</span>              :     return (networkType, null);</span>
+<span id="L36"><span class="lineNum">      36</span>              :   }</span>
+<span id="L37"><span class="lineNum">      37</span>              : }</span>
         </pre>
               </td>
             </tr>

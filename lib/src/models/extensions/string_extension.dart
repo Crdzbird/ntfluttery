@@ -39,7 +39,7 @@ extension StringExtension on String {
           try {
             jsonObjects.add(json.decode(jsonStr));
           } catch (e) {
-            print('Error parsing JSON: $e');
+            rethrow;
           }
         }
       }

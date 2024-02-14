@@ -5,14 +5,7 @@ import 'package:ntfluttery/src/models/enums/network_error_type.dart';
 ///
 /// This abstract class is intended to be extended by specific types of failures.
 /// It extends `Equatable` to facilitate value comparison.
-abstract class Failure extends Equatable {
-  /// Provides a list of properties for value comparison.
-  ///
-  /// Overrides the `props` getter from `Equatable`. Since `Failure` is a base class,
-  /// it returns an empty list by default.
-  @override
-  List<Object> get props => [];
-}
+abstract class Failure extends Equatable {}
 
 /// A class representing server-related failures.
 ///

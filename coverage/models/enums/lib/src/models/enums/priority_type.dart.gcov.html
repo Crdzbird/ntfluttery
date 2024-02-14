@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="headerItem">Test Date:</td>
-            <td class="headerValue">2024-02-12 10:37:36</td>
+            <td class="headerValue">2024-02-14 13:47:15</td>
             <td></td>
             <td class="headerItem">Functions:</td>
             <td class="headerCovTableEntryHi">-</td>
@@ -60,26 +60,60 @@
               <td>
 <pre class="sourceHeading">            Line data    Source code</pre>
 <pre class="source">
-<span id="L1"><span class="lineNum">       1</span>              : enum PriorityType {</span>
-<span id="L2"><span class="lineNum">       2</span>              :   min(1),</span>
-<span id="L3"><span class="lineNum">       3</span>              :   low(2),</span>
-<span id="L4"><span class="lineNum">       4</span>              :   none(3),</span>
-<span id="L5"><span class="lineNum">       5</span>              :   high(4),</span>
-<span id="L6"><span class="lineNum">       6</span>              :   max(5);</span>
-<span id="L7"><span class="lineNum">       7</span>              : </span>
-<span id="L8"><span class="lineNum">       8</span>              :   const PriorityType(this.type);</span>
-<span id="L9"><span class="lineNum">       9</span>              :   final int type;</span>
-<span id="L10"><span class="lineNum">      10</span>              : </span>
-<span id="L11"><span class="lineNum">      11</span> <span class="tlaGNC tlaBgGNC">           2 :   static fromValue(int value) =&gt; PriorityType.values.firstWhere(</span></span>
-<span id="L12"><span class="lineNum">      12</span> <span class="tlaGNC">           3 :         (e) =&gt; e.type == value,</span></span>
-<span id="L13"><span class="lineNum">      13</span> <span class="tlaGNC">           1 :         orElse: () =&gt; PriorityType.none,</span></span>
-<span id="L14"><span class="lineNum">      14</span>              :       );</span>
-<span id="L15"><span class="lineNum">      15</span>              : </span>
-<span id="L16"><span class="lineNum">      16</span> <span class="tlaGNC">           2 :   static fromString(String value) =&gt; PriorityType.values.firstWhere(</span></span>
-<span id="L17"><span class="lineNum">      17</span> <span class="tlaGNC">           3 :         (e) =&gt; e.toString() == value,</span></span>
-<span id="L18"><span class="lineNum">      18</span> <span class="tlaGNC">           1 :         orElse: () =&gt; PriorityType.none,</span></span>
-<span id="L19"><span class="lineNum">      19</span>              :       );</span>
-<span id="L20"><span class="lineNum">      20</span>              : }</span>
+<span id="L1"><span class="lineNum">       1</span>              : /// Enum representing various priority levels.</span>
+<span id="L2"><span class="lineNum">       2</span>              : ///</span>
+<span id="L3"><span class="lineNum">       3</span>              : /// This enumeration is used to categorize different levels of priority,</span>
+<span id="L4"><span class="lineNum">       4</span>              : /// ranging from minimum to maximum.</span>
+<span id="L5"><span class="lineNum">       5</span>              : enum PriorityType {</span>
+<span id="L6"><span class="lineNum">       6</span>              :   /// The minimum priority level.</span>
+<span id="L7"><span class="lineNum">       7</span>              :   min(1),</span>
+<span id="L8"><span class="lineNum">       8</span>              : </span>
+<span id="L9"><span class="lineNum">       9</span>              :   /// A low priority level.</span>
+<span id="L10"><span class="lineNum">      10</span>              :   low(2),</span>
+<span id="L11"><span class="lineNum">      11</span>              : </span>
+<span id="L12"><span class="lineNum">      12</span>              :   /// Indicates no specific priority (neutral).</span>
+<span id="L13"><span class="lineNum">      13</span>              :   none(3),</span>
+<span id="L14"><span class="lineNum">      14</span>              : </span>
+<span id="L15"><span class="lineNum">      15</span>              :   /// A high priority level.</span>
+<span id="L16"><span class="lineNum">      16</span>              :   high(4),</span>
+<span id="L17"><span class="lineNum">      17</span>              : </span>
+<span id="L18"><span class="lineNum">      18</span>              :   /// The maximum priority level.</span>
+<span id="L19"><span class="lineNum">      19</span>              :   max(5);</span>
+<span id="L20"><span class="lineNum">      20</span>              : </span>
+<span id="L21"><span class="lineNum">      21</span>              :   /// Constructs a `PriorityType` instance with a specific integer value.</span>
+<span id="L22"><span class="lineNum">      22</span>              :   ///</span>
+<span id="L23"><span class="lineNum">      23</span>              :   /// Each priority level is associated with a unique integer value.</span>
+<span id="L24"><span class="lineNum">      24</span>              :   const PriorityType(this.type);</span>
+<span id="L25"><span class="lineNum">      25</span>              : </span>
+<span id="L26"><span class="lineNum">      26</span>              :   /// The integer value representing the priority level.</span>
+<span id="L27"><span class="lineNum">      27</span>              :   final int type;</span>
+<span id="L28"><span class="lineNum">      28</span>              : </span>
+<span id="L29"><span class="lineNum">      29</span>              :   /// Retrieves the `PriorityType` corresponding to a given integer value.</span>
+<span id="L30"><span class="lineNum">      30</span>              :   ///</span>
+<span id="L31"><span class="lineNum">      31</span>              :   /// This method attempts to map a provided integer [value] to a `PriorityType`.</span>
+<span id="L32"><span class="lineNum">      32</span>              :   /// If no matching type is found, it defaults to `PriorityType.none`.</span>
+<span id="L33"><span class="lineNum">      33</span>              :   ///</span>
+<span id="L34"><span class="lineNum">      34</span>              :   /// - [value]: The integer value to be converted into a `PriorityType`.</span>
+<span id="L35"><span class="lineNum">      35</span>              :   /// - Returns: The corresponding `PriorityType` instance or `PriorityType.none`</span>
+<span id="L36"><span class="lineNum">      36</span>              :   ///   if no match is found.</span>
+<span id="L37"><span class="lineNum">      37</span> <span class="tlaGNC tlaBgGNC">           4 :   static fromValue(int value) =&gt; PriorityType.values.firstWhere(</span></span>
+<span id="L38"><span class="lineNum">      38</span> <span class="tlaGNC">           6 :         (e) =&gt; e.type == value,</span></span>
+<span id="L39"><span class="lineNum">      39</span> <span class="tlaGNC">           1 :         orElse: () =&gt; PriorityType.none,</span></span>
+<span id="L40"><span class="lineNum">      40</span>              :       );</span>
+<span id="L41"><span class="lineNum">      41</span>              : </span>
+<span id="L42"><span class="lineNum">      42</span>              :   /// Retrieves the `PriorityType` corresponding to a given string representation.</span>
+<span id="L43"><span class="lineNum">      43</span>              :   ///</span>
+<span id="L44"><span class="lineNum">      44</span>              :   /// This method attempts to map a string representation [value] to a `PriorityType`.</span>
+<span id="L45"><span class="lineNum">      45</span>              :   /// If no matching type is found, it defaults to `PriorityType.none`.</span>
+<span id="L46"><span class="lineNum">      46</span>              :   ///</span>
+<span id="L47"><span class="lineNum">      47</span>              :   /// - [value]: The string representation of the `PriorityType` to be converted.</span>
+<span id="L48"><span class="lineNum">      48</span>              :   /// - Returns: The corresponding `PriorityType` instance or `PriorityType.none`</span>
+<span id="L49"><span class="lineNum">      49</span>              :   ///   if no match is found.</span>
+<span id="L50"><span class="lineNum">      50</span> <span class="tlaGNC">           2 :   static fromString(String value) =&gt; PriorityType.values.firstWhere(</span></span>
+<span id="L51"><span class="lineNum">      51</span> <span class="tlaGNC">           3 :         (e) =&gt; e.toString() == value,</span></span>
+<span id="L52"><span class="lineNum">      52</span> <span class="tlaGNC">           1 :         orElse: () =&gt; PriorityType.none,</span></span>
+<span id="L53"><span class="lineNum">      53</span>              :       );</span>
+<span id="L54"><span class="lineNum">      54</span>              : }</span>
         </pre>
               </td>
             </tr>
