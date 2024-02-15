@@ -1,7 +1,6 @@
 import 'package:ntfluttery/ntfluttery.dart';
 
 Future<void> main() async {
-  final String topic = 'topic';
   final cliente = NtflutteryService(
       credentials: Credentials(username: 'credentials', password: 'password'))
     ..addLogging(true);
