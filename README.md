@@ -1,7 +1,7 @@
 
 # ntfluttery
 
-This plugin is focused on help with the integration of https://notifications.ravenloop.io it has multiple ways to access the list of messages such as a Streaming of data or even using custom credentials.
+This plugin is focused on help with the integration of ntfy.sh it has multiple ways to access the list of messages such as a Streaming of data or even using custom credentials.
 
 Also it provides various ways to handle the messages list.
 
